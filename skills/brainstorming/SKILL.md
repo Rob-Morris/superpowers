@@ -1,6 +1,6 @@
 ---
 name: brainstorming
-description: "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation."
+description: "Use this before creative work or for heavier shaping, where the approach is not clear. Explores user intent, requirements and design before implementation."
 ---
 
 # Brainstorming Ideas Into Designs
@@ -8,6 +8,12 @@ description: "You MUST use this before any creative work - creating features, bu
 Help turn ideas into fully formed designs and specs through natural collaborative dialogue.
 
 Start by understanding the current project context, then ask questions one at a time to refine the idea. Once you understand what you're building, present the design and get user approval.
+
+## Relationship to Brain shaping
+
+**If working in an Obsidian Brain vault** (a `.brain/` directory exists at the project root): prefer the `shaping` skill instead of this one. Shaping covers the same ground — its `brainstorm` mode handles new ideas and stub artefacts (explore, write initial content, hand off to refine), and its `refine` mode handles existing artefacts with open decisions. Brainstorming and shaping are **alternatives, not sequential stages** — don't run both.
+
+Only fall back to this skill in a Brain vault if the user explicitly asks for it, or if shaping isn't available for some reason.
 
 <HARD-GATE>
 Do NOT invoke any implementation skill, write any code, scaffold any project, or take any implementation action until you have presented a design and the user has approved it. This applies to EVERY project regardless of perceived simplicity.
