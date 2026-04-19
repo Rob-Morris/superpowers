@@ -48,6 +48,8 @@ Use Task tool with superpowers-brain:code-reviewer type, fill template at `code-
 
 ## Example
 
+> **In a Brain vault** (a `.brain/` directory exists at the project root), plans live at `_Temporal/Plans/yyyymmdd-plan~{Title}.md` instead of `docs/superpowers/plans/`. Substitute the plan path in `PLAN_OR_REQUIREMENTS` accordingly.
+
 ```
 [Just completed Task 2: Add verification function]
 

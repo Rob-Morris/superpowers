@@ -4,7 +4,7 @@ Use this template when dispatching a spec document reviewer subagent.
 
 **Purpose:** Verify the spec is complete, consistent, and ready for implementation planning.
 
-**Dispatch after:** Spec document is written to docs/superpowers/specs/
+**Dispatch after:** Spec document is written to `docs/superpowers/specs/`. In a Brain vault (a `.brain/` directory exists at the project root), the spec lives at `Designs/<Title>.md` instead — pass that path through as `[SPEC_FILE_PATH]`.
 
 ```
 Task tool (general-purpose):

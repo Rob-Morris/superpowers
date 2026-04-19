@@ -125,6 +125,8 @@ Implementer subagents report one of four statuses. Handle each appropriately:
 
 ## Example Workflow
 
+> **In a Brain vault** (a `.brain/` directory exists at the project root), plans live at `_Temporal/Plans/yyyymmdd-plan~{Title}.md` instead of `docs/superpowers/plans/`. The workflow is identical otherwise — just substitute the plan path.
+
 ```
 You: I'm using Subagent-Driven Development to execute this plan.
 

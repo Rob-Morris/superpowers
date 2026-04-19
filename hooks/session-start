@@ -4,8 +4,9 @@
 set -euo pipefail
 
 # Brain compatibility (fork-specific):
-# When the working directory is an Obsidian Brain vault (indicated by a
-# .brain/ directory), suppress the superpowers SessionStart context injection.
+# When the working directory is connected to a Brain (indicated by a
+# .brain/ directory — true for both vaults and Brain-connected projects),
+# suppress the superpowers SessionStart context injection.
 # Superpowers skills stay available for discretionary use via the Skill tool;
 # they just don't pre-empt Brain's own session bootstrap.
 # Override with SUPERPOWERS_IGNORE_BRAIN=1 to force the hook to run anyway.
