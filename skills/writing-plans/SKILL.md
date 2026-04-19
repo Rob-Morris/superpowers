@@ -50,7 +50,7 @@ This structure informs the task decomposition. Each task should produce self-con
 ```markdown
 # [Feature Name] Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (full review gates — for merge-grade work), superpowers:subagent-driven-development-light (single end-of-plan review — for prototypes, small plans, lower-risk work), or superpowers:executing-plans (batch execution with checkpoints) to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** [One sentence describing what this builds]
 
@@ -136,17 +136,23 @@ If you find issues, fix them inline. No need to re-review — just fix and move 
 
 After saving the plan, offer execution choice:
 
-**"Plan complete and saved. Two execution options:**
+**"Plan complete and saved. Three execution options:**
 
-**1. Subagent-Driven (recommended)** - I dispatch a fresh subagent per task, review between tasks, fast iteration
+**1. Subagent-Driven — Full (recommended for merge-grade work)** - Fresh subagent per task + two-stage review (spec compliance, then code quality) after each task. Highest quality bar, most iterations.
 
-**2. Inline Execution** - Execute tasks in this session using executing-plans, batch execution with checkpoints
+**2. Subagent-Driven — Light (recommended for prototypes, small plans, lower-risk work)** - Fresh subagent per task, trust self-review, one end-of-plan review covering the whole implementation. Faster, less ceremony.
+
+**3. Inline Execution** - Execute tasks in this session using executing-plans, batch execution with checkpoints.
 
 **Which approach?"**
 
-**If Subagent-Driven chosen:**
+**If Subagent-Driven — Full chosen:**
 - **REQUIRED SUB-SKILL:** Use superpowers:subagent-driven-development
 - Fresh subagent per task + two-stage review
+
+**If Subagent-Driven — Light chosen:**
+- **REQUIRED SUB-SKILL:** Use superpowers:subagent-driven-development-light
+- Fresh subagent per task + single end-of-plan review
 
 **If Inline Execution chosen:**
 - **REQUIRED SUB-SKILL:** Use superpowers:executing-plans
