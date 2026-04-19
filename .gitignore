@@ -5,3 +5,5 @@
 node_modules/
 inspo
 triage/
+/.brain/local
+CLAUDE.local.md
