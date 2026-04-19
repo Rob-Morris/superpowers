@@ -13,7 +13,6 @@ description: Use when creating new skills, editing existing skills, or verifying
 - **If working in an Obsidian Brain vault** (a `.brain/` directory exists at the project root), author the skill via `brain_create(resource="skill", name="<skill-slug>", body=...)`. Brain stores it in `_Config/Skills/<skill-slug>/SKILL.md` inside the vault. Vault-scoped: only available when working in that vault.
 - **Otherwise, or when you want the skill available globally across all projects**, create it in the agent-specific directory: `~/.claude/skills/<skill-slug>/` for Claude Code, `~/.agents/skills/<skill-slug>/` for Codex. Global, but outside any vault's taxonomy.
 
-
 You write test cases (pressure scenarios with subagents), watch them fail (baseline behavior), write the skill (documentation), watch tests pass (agents comply), and refactor (close loopholes).
 
 **Core principle:** If you didn't watch an agent fail without the skill, you don't know if the skill teaches the right thing.
