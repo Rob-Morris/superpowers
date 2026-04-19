@@ -26,7 +26,7 @@ You MUST create a task for each of these items and complete them in order:
 3. **Ask clarifying questions** — one at a time, understand purpose/constraints/success criteria
 4. **Propose 2-3 approaches** — with trade-offs and your recommendation
 5. **Present design** — in sections scaled to their complexity, get user approval after each section
-6. **Write design doc** — save to `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md` and commit
+6. **Write design doc** — save the design (see "After the Design → Documentation" below for location rules) and commit
 7. **Spec self-review** — quick inline check for placeholders, contradictions, ambiguity, scope (see below)
 8. **User reviews written spec** — ask user to review the spec file before proceeding
 9. **Transition to implementation** — invoke writing-plans skill to create implementation plan
@@ -108,10 +108,10 @@ digraph brainstorming {
 
 **Documentation:**
 
-- Write the validated design (spec) to `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md`
-  - (User preferences for spec location override this default)
+- Write the validated design (spec):
+  - **If working in an Obsidian Brain vault** (a `.brain/` directory exists at the project root): create via `brain_create(resource="artefact", type="designs", title="<topic>")`. Brain handles path (`Designs/<Title>.md`), frontmatter, and initial status (`shaping`). Use `brain_edit` to update individual sections rather than rewriting the whole file. You do **not** need to commit — the vault may be a separate git repo, and Brain manages its own lifecycle.
+  - **Otherwise:** save to `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md`. (User preferences for spec location override this default.) Commit the design document to git.
 - Use elements-of-style:writing-clearly-and-concisely skill if available
-- Commit the design document to git
 
 **Spec Self-Review:**
 After writing the spec document, look at it with fresh eyes:
