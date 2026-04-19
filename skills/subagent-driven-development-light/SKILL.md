@@ -49,7 +49,7 @@ digraph process {
     "Implementer implements, tests, commits, self-reviews" [shape=box];
     "Mark task complete in TodoWrite" [shape=box];
     "Dispatch final reviewer subagent (../subagent-driven-development/code-quality-reviewer-prompt.md) for entire implementation" [shape=box];
-    "Use superpowers:finishing-a-development-branch" [shape=box style=filled fillcolor=lightgreen];
+    "Use superpowers-brain:finishing-a-development-branch" [shape=box style=filled fillcolor=lightgreen];
 
     "Read plan, note tasks and context" -> "More tasks remain?";
     "More tasks remain?" -> "Dispatch implementer subagent (../subagent-driven-development/implementer-prompt.md)" [label="yes"];
@@ -60,7 +60,7 @@ digraph process {
     "Implementer implements, tests, commits, self-reviews" -> "Mark task complete in TodoWrite";
     "Mark task complete in TodoWrite" -> "More tasks remain?";
     "More tasks remain?" -> "Dispatch final reviewer subagent (../subagent-driven-development/code-quality-reviewer-prompt.md) for entire implementation" [label="no"];
-    "Dispatch final reviewer subagent (../subagent-driven-development/code-quality-reviewer-prompt.md) for entire implementation" -> "Use superpowers:finishing-a-development-branch";
+    "Dispatch final reviewer subagent (../subagent-driven-development/code-quality-reviewer-prompt.md) for entire implementation" -> "Use superpowers-brain:finishing-a-development-branch";
 }
 ```
 
@@ -117,12 +117,12 @@ Still in force:
 
 Same as the heavy variant:
 
-- **superpowers:using-git-worktrees** — set up isolated workspace before starting
-- **superpowers:writing-plans** — creates the plan this skill executes
-- **superpowers:test-driven-development** — implementer subagents follow TDD per task
-- **superpowers:finishing-a-development-branch** — complete development after all tasks
+- **superpowers-brain:using-git-worktrees** — set up isolated workspace before starting
+- **superpowers-brain:writing-plans** — creates the plan this skill executes
+- **superpowers-brain:test-driven-development** — implementer subagents follow TDD per task
+- **superpowers-brain:finishing-a-development-branch** — complete development after all tasks
 
 **Alternatives:**
 
-- **superpowers:subagent-driven-development** — heavier variant with per-task review gates
-- **superpowers:executing-plans** — parallel-session batch execution with checkpoints
+- **superpowers-brain:subagent-driven-development** — heavier variant with per-task review gates
+- **superpowers-brain:executing-plans** — parallel-session batch execution with checkpoints
