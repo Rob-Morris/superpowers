@@ -132,6 +132,18 @@ After writing the complete plan, look at the spec with fresh eyes and check the 
 
 If you find issues, fix them inline. No need to re-review — just fix and move on. If you find a spec requirement with no task, add the task.
 
+## User Review Gate (Brain mode)
+
+If working in a Brain vault (a `.brain/` directory exists at the project root), ask your human partner to review the plan before presenting execution options:
+
+> "Plan written and saved to `<path>`. Please review it and let me know if you want any changes before we pick an execution approach."
+
+If they request changes, make them and re-run Self-Review. Once they approve, mark the plan as `approved`:
+
+- `brain_edit(resource="artefact", path="<plan path>", operation="edit", frontmatter={"status": "approved"})` (omit `body` — frontmatter-only change)
+
+Then proceed to Execution Handoff. `executing-plans` will transition `approved` → `implementing` → `completed` from here.
+
 ## Execution Handoff
 
 After saving the plan, offer execution choice:

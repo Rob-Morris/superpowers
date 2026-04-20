@@ -7,6 +7,10 @@ description: Use when starting any conversation - establishes how to find and us
 If you were dispatched as a subagent to execute a specific task, skip this skill.
 </SUBAGENT-STOP>
 
+<BRAIN-MODE>
+If a `.brain/` directory exists at the project root, this session is connected to a Brain vault. Before routing to superpowers skills, confirm `brain_session` has been called this turn — Brain's trigger table, memories, and skill index take precedence over superpowers' skill routing. Superpowers skills remain available for discretionary use once Brain context is loaded; they are not the first-choice routing mechanism in a Brain vault.
+</BRAIN-MODE>
+
 <EXTREMELY-IMPORTANT>
 If you think there is even a 1% chance a skill might apply to what you are doing, you ABSOLUTELY MUST invoke the skill.
 
