@@ -1,9 +1,9 @@
 {
   "name": "superpowers-dev",
-  "description": "Development marketplace for Superpowers core skills library",
+  "description": "Development marketplace for the Superpowers Brain fork",
   "owner": {
-    "name": "Jesse Vincent",
-    "email": "jesse@fsck.com"
+    "name": "Rob Morris",
+    "email": "rob@prismatik.com.au"
   },
   "plugins": [
     {
@@ -12,8 +12,8 @@
       "version": "5.0.7",
       "source": "./",
       "author": {
-        "name": "Jesse Vincent",
-        "email": "jesse@fsck.com"
+        "name": "Rob Morris",
+        "email": "rob@prismatik.com.au"
       }
     }
   ]

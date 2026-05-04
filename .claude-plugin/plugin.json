@@ -1,13 +1,13 @@
 {
   "name": "superpowers-brain",
-  "description": "Core skills library for Claude Code: TDD, debugging, collaboration patterns, and proven techniques",
+  "description": "Brain-compatible fork of the Superpowers skills library for Claude Code: TDD, debugging, collaboration patterns, and proven techniques",
   "version": "5.0.7",
   "author": {
-    "name": "Jesse Vincent",
-    "email": "jesse@fsck.com"
+    "name": "Rob Morris",
+    "email": "rob@prismatik.com.au"
   },
-  "homepage": "https://github.com/obra/superpowers",
-  "repository": "https://github.com/obra/superpowers",
+  "homepage": "https://github.com/Rob-Morris/superpowers",
+  "repository": "https://github.com/Rob-Morris/superpowers",
   "license": "MIT",
   "keywords": [
     "skills",

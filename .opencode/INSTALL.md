@@ -1,4 +1,4 @@
-# Installing Superpowers for OpenCode
+# Installing Superpowers Brain for OpenCode
 
 ## Prerequisites
 
@@ -6,11 +6,11 @@
 
 ## Installation
 
-Add superpowers to the `plugin` array in your `opencode.json` (global or project-level):
+Add Superpowers Brain to the `plugin` array in your `opencode.json` (global or project-level):
 
 ```json
 {
-  "plugin": ["superpowers@git+https://github.com/obra/superpowers.git"]
+  "plugin": ["superpowers-brain@git+https://github.com/Rob-Morris/superpowers.git"]
 }
 ```
 
@@ -18,22 +18,9 @@ Restart OpenCode. That's it — the plugin auto-installs and registers all skill
 
 Verify by asking: "Tell me about your superpowers"
 
-## Migrating from the old symlink-based install
+## Existing superpowers installs
 
-If you previously installed superpowers using `git clone` and symlinks, remove the old setup:
-
-```bash
-# Remove old symlinks
-rm -f ~/.config/opencode/plugins/superpowers.js
-rm -rf ~/.config/opencode/skills/superpowers
-
-# Optionally remove the cloned repo
-rm -rf ~/.config/opencode/superpowers
-
-# Remove skills.paths from opencode.json if you added one for superpowers
-```
-
-Then follow the installation steps above.
+No migration cleanup is required here. Existing `superpowers` installs and paths are outside the scope of this fork's install instructions and should be left alone. If you need to update or remove an upstream install, follow the upstream project's OpenCode guide: https://github.com/obra/superpowers/blob/main/docs/README.opencode.md
 
 ## Usage
 
@@ -41,18 +28,18 @@ Use OpenCode's native `skill` tool:
 
 ```
 use skill tool to list skills
-use skill tool to load superpowers/brainstorming
+use skill tool to load superpowers-brain:brainstorming
 ```
 
 ## Updating
 
-Superpowers updates automatically when you restart OpenCode.
+Superpowers Brain updates automatically when you restart OpenCode.
 
 To pin a specific version:
 
 ```json
 {
-  "plugin": ["superpowers@git+https://github.com/obra/superpowers.git#v5.0.3"]
+  "plugin": ["superpowers-brain@git+https://github.com/Rob-Morris/superpowers.git#v5.0.7"]
 }
 ```
 
@@ -79,5 +66,5 @@ When skills reference Claude Code tools:
 
 ## Getting Help
 
-- Report issues: https://github.com/obra/superpowers/issues
-- Full documentation: https://github.com/obra/superpowers/blob/main/docs/README.opencode.md
+- Report issues: https://github.com/Rob-Morris/superpowers/issues
+- Full documentation: https://github.com/Rob-Morris/superpowers/blob/main/docs/README.opencode.md

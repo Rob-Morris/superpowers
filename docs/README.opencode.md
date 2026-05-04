@@ -1,14 +1,14 @@
-# Superpowers for OpenCode
+# Superpowers Brain for OpenCode
 
-Complete guide for using Superpowers with [OpenCode.ai](https://opencode.ai).
+Complete guide for using the Superpowers Brain fork with [OpenCode.ai](https://opencode.ai).
 
 ## Installation
 
-Add superpowers to the `plugin` array in your `opencode.json` (global or project-level):
+Add the fork to the `plugin` array in your `opencode.json` (global or project-level):
 
 ```json
 {
-  "plugin": ["superpowers@git+https://github.com/obra/superpowers.git"]
+  "plugin": ["superpowers-brain@git+https://github.com/Rob-Morris/superpowers.git"]
 }
 ```
 
@@ -16,22 +16,9 @@ Restart OpenCode. The plugin auto-installs via Bun and registers all skills auto
 
 Verify by asking: "Tell me about your superpowers"
 
-### Migrating from the old symlink-based install
+### Existing superpowers installs
 
-If you previously installed superpowers using `git clone` and symlinks, remove the old setup:
-
-```bash
-# Remove old symlinks
-rm -f ~/.config/opencode/plugins/superpowers.js
-rm -rf ~/.config/opencode/skills/superpowers
-
-# Optionally remove the cloned repo
-rm -rf ~/.config/opencode/superpowers
-
-# Remove skills.paths from opencode.json if you added one for superpowers
-```
-
-Then follow the installation steps above.
+No migration cleanup is required here. Existing `superpowers` installs and paths are outside the scope of this fork's install instructions and should be left alone. If you need to update or remove an upstream install, follow the upstream project's OpenCode guide: https://github.com/obra/superpowers/blob/main/docs/README.opencode.md
 
 ## Usage
 
@@ -46,7 +33,7 @@ use skill tool to list skills
 ### Loading a Skill
 
 ```
-use skill tool to load superpowers/brainstorming
+use skill tool to load superpowers-brain:brainstorming
 ```
 
 ### Personal Skills
@@ -62,7 +49,7 @@ Create `~/.config/opencode/skills/my-skill/SKILL.md`:
 ```markdown
 ---
 name: my-skill
-description: Use when [condition] - [what it does]
+description: Provides custom project guidance. Use when working on [condition].
 ---
 
 # My Skill
@@ -78,13 +65,13 @@ Create project-specific skills in `.opencode/skills/` within your project.
 
 ## Updating
 
-Superpowers updates automatically when you restart OpenCode. The plugin is re-installed from the git repository on each launch.
+Superpowers Brain updates automatically when you restart OpenCode. The plugin is re-installed from the git repository on each launch.
 
 To pin a specific version, use a branch or tag:
 
 ```json
 {
-  "plugin": ["superpowers@git+https://github.com/obra/superpowers.git#v5.0.3"]
+  "plugin": ["superpowers-brain@git+https://github.com/Rob-Morris/superpowers.git#v5.0.7"]
 }
 ```
 
@@ -125,6 +112,6 @@ Skills written for Claude Code are automatically adapted for OpenCode:
 
 ## Getting Help
 
-- Report issues: https://github.com/obra/superpowers/issues
-- Main documentation: https://github.com/obra/superpowers
+- Report issues: https://github.com/Rob-Morris/superpowers/issues
+- Main documentation: https://github.com/Rob-Morris/superpowers
 - OpenCode docs: https://opencode.ai/docs/

@@ -1,6 +1,8 @@
-# Superpowers
+# Superpowers Brain
 
-Superpowers is a complete software development methodology for your coding agents, built on top of a set of composable skills and some initial instructions that make sure your agent uses them.
+Brain-compatible fork of Superpowers for coding agents.
+
+Superpowers Brain is a Brain-compatible adaptation of the Superpowers software development methodology for coding agents, built on top of a set of composable skills and some initial instructions that make sure your agent uses them.
 
 ## How it works
 
@@ -17,64 +19,31 @@ There's a bunch more to it, but that's the core of the system. And because the s
 
 ## Sponsorship
 
-If Superpowers has helped you do stuff that makes money and you are so inclined, I'd greatly appreciate it if you'd consider [sponsoring my opensource work](https://github.com/sponsors/obra).
-
-Thanks! 
-
-- Jesse
+Superpowers originated with [Jesse Vincent](https://blog.fsck.com) and the team at [Prime Radiant](https://primeradiant.com). If you would like to support the upstream project directly, you can [sponsor Jesse's open source work](https://github.com/sponsors/obra).
 
 
 ## Installation
 
 **Note:** Installation differs by platform. 
 
-### Claude Code Official Marketplace
+### Claude Code
 
-Superpowers is available via the [official Claude plugin marketplace](https://claude.com/plugins/superpowers)
-
-Install the plugin from Anthropic's official marketplace:
+For local or fork-based testing, use the bundled development marketplace:
 
 ```bash
-/plugin install superpowers@claude-plugins-official
+/plugin marketplace add /absolute/path/to/superpowers-brain/.claude-plugin/marketplace.json
+/plugin install superpowers-brain@superpowers-dev
 ```
 
-### Claude Code (Superpowers Marketplace)
+### OpenAI Codex
 
-The Superpowers marketplace provides Superpowers and some other related plugins for Claude Code.
+Use native skill discovery for this fork:
 
-In Claude Code, register the marketplace first:
-
-```bash
-/plugin marketplace add obra/superpowers-marketplace
+```text
+Fetch and follow instructions from https://raw.githubusercontent.com/Rob-Morris/superpowers/refs/heads/main/.codex/INSTALL.md
 ```
 
-Then install the plugin from this marketplace:
-
-```bash
-/plugin install superpowers@superpowers-marketplace
-```
-
-### OpenAI Codex CLI
-
-- Open plugin search interface
-
-```bash
-/plugins
-```
-
-Search for Superpowers
-
-```bash
-superpowers
-```
-
-Select `Install Plugin`
-
-### OpenAI Codex App
-
-- In the Codex app, click on Plugins in the sidebar.
-- You should see `Superpowers` in the Coding section. 
-- Click the `+` next to Superpowers and follow the prompts.
+**Detailed docs:** [docs/README.codex.md](docs/README.codex.md)
 
 
 ### Cursor (via Plugin Marketplace)
@@ -82,17 +51,17 @@ Select `Install Plugin`
 In Cursor Agent chat, install from marketplace:
 
 ```text
-/add-plugin superpowers
+/add-plugin superpowers-brain
 ```
 
-or search for "superpowers" in the plugin marketplace.
+or search for "superpowers-brain" in the plugin marketplace.
 
 ### OpenCode
 
 Tell OpenCode:
 
 ```
-Fetch and follow instructions from https://raw.githubusercontent.com/obra/superpowers/refs/heads/main/.opencode/INSTALL.md
+Fetch and follow instructions from https://raw.githubusercontent.com/Rob-Morris/superpowers/refs/heads/main/.opencode/INSTALL.md
 ```
 
 **Detailed docs:** [docs/README.opencode.md](docs/README.opencode.md)
@@ -100,20 +69,20 @@ Fetch and follow instructions from https://raw.githubusercontent.com/obra/superp
 ### GitHub Copilot CLI
 
 ```bash
-copilot plugin marketplace add obra/superpowers-marketplace
-copilot plugin install superpowers@superpowers-marketplace
+copilot plugin marketplace add /absolute/path/to/superpowers-brain/.claude-plugin/marketplace.json
+copilot plugin install superpowers-brain@superpowers-dev
 ```
 
 ### Gemini CLI
 
 ```bash
-gemini extensions install https://github.com/obra/superpowers
+gemini extensions install https://github.com/Rob-Morris/superpowers
 ```
 
 To update:
 
 ```bash
-gemini extensions update superpowers
+gemini extensions update superpowers-brain
 ```
 
 ## The Basic Workflow
@@ -191,8 +160,8 @@ MIT License - see LICENSE file for details
 
 ## Community
 
-Superpowers is built by [Jesse Vincent](https://blog.fsck.com) and the rest of the folks at [Prime Radiant](https://primeradiant.com).
+This fork is maintained by Rob Morris and is adapted from upstream Superpowers by [Jesse Vincent](https://blog.fsck.com) and the rest of the folks at [Prime Radiant](https://primeradiant.com).
 
 - **Discord**: [Join us](https://discord.gg/35wsABTejz) for community support, questions, and sharing what you're building with Superpowers
-- **Issues**: https://github.com/obra/superpowers/issues
+- **Issues**: https://github.com/Rob-Morris/superpowers/issues
 - **Release announcements**: [Sign up](https://primeradiant.com/superpowers/) to get notified about new versions
