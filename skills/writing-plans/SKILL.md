@@ -16,7 +16,7 @@ Assume they are a skilled developer, but know almost nothing about our toolset o
 **Context:** This should be run in a dedicated worktree (created by brainstorming skill).
 
 **Save plans to:**
-- **If working in an Obsidian Brain vault** (a `.brain/` directory exists at the project root): create the plan via `brain_create(resource="artefact", type="plans", title="<feature name>")`. Brain handles path (`_Temporal/Plans/yyyymmdd-plan~{Title}.md`), frontmatter, and status. Use `brain_edit` for subsequent section updates instead of rewriting the whole file.
+- **If working in an Obsidian Brain vault** (a `.brain/` directory exists at the project root): create the plan via `brain_create(resource="artefact", type="plans", title="<feature name>")`. Brain handles path (`_Temporal/Plans/yyyy-mm/yyyymmdd-plan~{Title}.md`), frontmatter, and status. Use `brain_edit` for subsequent section updates instead of rewriting the whole file.
 - **Otherwise:** save to `docs/superpowers/plans/YYYY-MM-DD-<feature-name>.md`. (User preferences for plan location override this default.)
 
 ## Scope Check

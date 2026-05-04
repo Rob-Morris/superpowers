@@ -125,12 +125,12 @@ Implementer subagents report one of four statuses. Handle each appropriately:
 
 ## Example Workflow
 
-> **In a Brain vault** (a `.brain/` directory exists at the project root), plans live at `_Temporal/Plans/yyyymmdd-plan~{Title}.md` instead of `docs/superpowers/plans/`. The workflow is identical otherwise — just substitute the plan path.
+> **In a Brain vault** (a `.brain/` directory exists at the project root), plans live at `_Temporal/Plans/yyyy-mm/yyyymmdd-plan~{Title}.md` instead of `docs/superpowers/plans/`. The workflow is identical otherwise — just substitute the plan path.
 
 ```
 You: I'm using Subagent-Driven Development to execute this plan.
 
-[Read plan file once: docs/superpowers/plans/feature-plan.md]
+[Read plan file once: _Temporal/Plans/2026-05/20260504-plan~Feature plan.md]
 [Extract all 5 tasks with full text and context]
 [Create TodoWrite with all tasks]
 

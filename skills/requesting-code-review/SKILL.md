@@ -48,7 +48,7 @@ Use Task tool with superpowers-brain:code-reviewer type, fill template at `code-
 
 ## Example
 
-> **In a Brain vault** (a `.brain/` directory exists at the project root), plans live at `_Temporal/Plans/yyyymmdd-plan~{Title}.md` instead of `docs/superpowers/plans/`. Substitute the plan path in `PLAN_OR_REQUIREMENTS` accordingly.
+> **In a Brain vault** (a `.brain/` directory exists at the project root), plans live at `_Temporal/Plans/yyyy-mm/yyyymmdd-plan~{Title}.md` instead of `docs/superpowers/plans/`. Substitute the plan path in `PLAN_OR_REQUIREMENTS` accordingly.
 
 ```
 [Just completed Task 2: Add verification function]
@@ -60,7 +60,7 @@ HEAD_SHA=$(git rev-parse HEAD)
 
 [Dispatch superpowers-brain:code-reviewer subagent]
   WHAT_WAS_IMPLEMENTED: Verification and repair functions for conversation index
-  PLAN_OR_REQUIREMENTS: Task 2 from docs/superpowers/plans/deployment-plan.md
+  PLAN_OR_REQUIREMENTS: Task 2 from _Temporal/Plans/2026-05/20260504-plan~Deployment plan.md
   BASE_SHA: a7981ec
   HEAD_SHA: 3df7661
   DESCRIPTION: Added verifyIndex() and repairIndex() with 4 issue types
