@@ -5,13 +5,31 @@ set -euo pipefail
 
 # Brain compatibility (fork-specific):
 # When the working directory is connected to a Brain (indicated by a
-# .brain/ directory — true for both vaults and Brain-connected projects),
+# .brain/ directory in this directory or an ancestor — true for both vaults
+# and Brain-connected projects launched from nested subdirectories),
 # suppress the superpowers SessionStart context injection.
 # Superpowers skills stay available for discretionary use via the Skill tool;
 # they just don't pre-empt Brain's own session bootstrap.
 # Override with SUPERPOWERS_IGNORE_BRAIN=1 to force the hook to run anyway.
 # Placed before PLUGIN_ROOT resolution so the early-exit does zero extra work.
-if [ -z "${SUPERPOWERS_IGNORE_BRAIN:-}" ] && [ -d "${PWD}/.brain" ]; then
+find_brain_root() {
+    local dir="$PWD"
+
+    while :; do
+        if [ -d "${dir}/.brain" ]; then
+            printf '%s\n' "$dir"
+            return 0
+        fi
+
+        if [ "$dir" = "/" ]; then
+            return 1
+        fi
+
+        dir="$(dirname "$dir")"
+    done
+}
+
+if [ -z "${SUPERPOWERS_IGNORE_BRAIN:-}" ] && find_brain_root >/dev/null; then
     printf '{}\n'
     exit 0
 fi
