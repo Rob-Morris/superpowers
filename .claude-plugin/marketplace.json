@@ -9,7 +9,7 @@
     {
       "name": "superpowers-brain",
       "description": "Brain-compatible fork of the Superpowers core skills library",
-      "version": "5.0.7",
+      "version": "6.2.0",
       "source": "./",
       "author": {
         "name": "Rob Morris",
