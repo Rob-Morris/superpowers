@@ -47,7 +47,7 @@ Dispatch a `general-purpose` subagent, filling the template at [code-reviewer.md
 
 ## Example
 
-> **In a Brain vault** (a `.brain/` directory exists at the project root), plans live at `_Temporal/Plans/yyyy-mm/yyyymmdd-plan~{Title}.md` instead of `docs/superpowers/plans/`. Substitute the plan path in `PLAN_OR_REQUIREMENTS` accordingly.
+> **In a Brain vault** (a `.brain/` directory exists in this directory or an ancestor), plans live at `_Temporal/Plans/yyyy-mm/yyyymmdd-plan~{Title}.md` instead of `docs/superpowers/plans/`. Substitute the plan path in `PLAN_OR_REQUIREMENTS` accordingly.
 
 ```
 [Just completed Task 2: Add verification function]

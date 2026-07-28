@@ -16,7 +16,9 @@ Assume they are a skilled developer, but know almost nothing about our toolset o
 **Context:** If working in an isolated worktree, it should have been created via the `superpowers:using-git-worktrees` skill at execution time.
 
 **Save plans to:**
-- **If working in an Obsidian Brain vault** (a `.brain/` directory exists at the project root): create the plan via `brain_create(resource="artefact", type="plans", title="<feature name>")`. Brain handles path (`_Temporal/Plans/yyyy-mm/yyyymmdd-plan~{Title}.md`), frontmatter, and status. Use `brain_edit` for subsequent section updates instead of rewriting the whole file.
+- **If working in an Obsidian Brain vault** (a `.brain/` directory exists in this directory or an ancestor): create the plan via `brain_create(resource="artefact", type="plans", title="<feature name>")`. Brain handles path (`_Temporal/Plans/yyyy-mm/yyyymmdd-plan~{Title}.md`), frontmatter, and status. Use `brain_edit` for subsequent section updates instead of rewriting the whole file.
+
+  **The plan body still follows this skill's structure verbatim.** Brain's plan template (Goal / Approach / Files) is a *minimum, not a ceiling*: a Brain-created plan MUST also carry the Plan Document Header, a `## Global Constraints` section, `### Task N: [Component Name]` headings, and every task's `**Interfaces:**` block, exactly as specified below. This is not a style preference — the execution skills extract each task from the plan file by matching its `Task N` heading, so a plan whose body is Brain-template-only cannot be executed at all: no task brief, no dispatch.
 - **Otherwise:** save to `docs/superpowers/plans/YYYY-MM-DD-<feature-name>.md`. (User preferences for plan location override this default.)
 
 ## Scope Check
@@ -150,7 +152,7 @@ If you find issues, fix them inline. No need to re-review — just fix and move 
 
 ## User Review Gate (Brain mode)
 
-If working in a Brain vault (a `.brain/` directory exists at the project root), ask your human partner to review the plan before presenting execution options:
+If working in a Brain vault (a `.brain/` directory exists in this directory or an ancestor), ask your human partner to review the plan before presenting execution options:
 
 > "Plan written and saved to `<path>`. Please review it and let me know if you want any changes before we pick an execution approach."
 
@@ -158,7 +160,7 @@ If they request changes, make them and re-run Self-Review. Once they approve, ma
 
 - `brain_edit(resource="artefact", path="<plan path>", operation="edit", frontmatter={"status": "approved"})` (omit `body` — frontmatter-only change)
 
-Then proceed to Execution Handoff. `executing-plans` will transition `approved` → `implementing` → `completed` from here.
+Then proceed to Execution Handoff. Whichever executor your human partner picks — `subagent-driven-development`, `subagent-driven-development-light`, or `executing-plans` — transitions `approved` → `implementing` → `completed` from here.
 
 ## Execution Handoff
 
@@ -166,7 +168,7 @@ After saving the plan, offer execution choice:
 
 **"Plan complete and saved. Three execution options:**
 
-**1. Subagent-Driven — Full (recommended for merge-grade work)** - Fresh subagent per task + two-stage review (spec compliance, then code quality) after each task. Highest quality bar, most iterations.
+**1. Subagent-Driven — Full (recommended for merge-grade work)** - Fresh subagent per task + a task review (spec compliance and code quality) after each task, with a bounded fix loop. Highest quality bar, most iterations.
 
 **2. Subagent-Driven — Light (recommended for prototypes, small plans, lower-risk work)** - Fresh subagent per task, trust self-review, one end-of-plan review covering the whole implementation. Faster, less ceremony.
 
@@ -176,7 +178,7 @@ After saving the plan, offer execution choice:
 
 **If Subagent-Driven — Full chosen:**
 - **REQUIRED SUB-SKILL:** Use superpowers-brain:subagent-driven-development
-- Fresh subagent per task + two-stage review
+- Fresh subagent per task + per-task review
 
 **If Subagent-Driven — Light chosen:**
 - **REQUIRED SUB-SKILL:** Use superpowers-brain:subagent-driven-development-light

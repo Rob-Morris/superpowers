@@ -56,6 +56,17 @@ Native tools handle directory placement, branch creation, and cleanup automatica
 
 Only proceed to Step 1b if you have no native worktree tool available.
 
+> **Brain mode:** In a Brain vault (a `.brain/` directory exists in this
+> directory or an ancestor), prefer a worktree **inside** the repo —
+> `<repo-root>/.worktrees/<branch-name>`. Brain detection walks up from the
+> working directory looking for `.brain/`, and `.brain/` is untracked, so a
+> worktree placed outside the repo has no `.brain/` ancestor: the session
+> drops out of Brain mode mid-workflow, after the design and plan are already
+> in the vault. If your native tool can be pointed at `.worktrees/`, point it
+> there. If it cannot and it places the worktree elsewhere, say so, keep the
+> vault plan path in hand across the hop, and call `brain_session` again from
+> the new working directory before continuing.
+
 ### 1b. Git Worktree Fallback
 
 **Only use this if Step 1a does not apply** — you have no native worktree tool available. Create a worktree manually using git.

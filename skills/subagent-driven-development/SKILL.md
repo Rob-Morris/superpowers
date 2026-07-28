@@ -139,6 +139,24 @@ a ledger file, not only in todos.
 - `git clean -fdx` will destroy the workspace (it's git-ignored scratch); if
   that happens, recover from `git log`.
 
+> **Brain mode:** In a Brain vault (a `.brain/` directory exists in this
+> directory or an ancestor), PLAN_FILE is the vault artefact
+> (`_Temporal/Plans/yyyy-mm/yyyymmdd-plan~{Title}.md`). The workspace still
+> belongs to the **code repo** — `sdd-workspace` resolves it from
+> `git rev-parse --show-toplevel`, and it never lands in the vault.
+>
+> Brain plan basenames contain spaces and a `~`, so the workspace directory
+> does too (`.superpowers/sdd/20260504-plan~Feature plan/`). Quote every plan,
+> workspace, brief, report, and review-package path — in script invocations,
+> in `rm -rf "<workspace>"`, and in the paths you paste into dispatch prompts
+> (`"<workspace>/task-3-brief.md"`). An unquoted path is how a subagent reads
+> the wrong file and how `rm -rf` deletes the wrong thing.
+>
+> Once the workspace is resolved, mark the plan as implementing:
+> `brain_edit(resource="artefact", path="<plan path>", operation="edit", frontmatter={"status": "implementing"})`
+> (omit `body` — frontmatter-only change). Whichever executor runs owns these
+> transitions; superpowers-brain:executing-plans states the same contract.
+
 Read the plan once, note its context and Global Constraints, and create a
 todo per task.
 
@@ -420,6 +438,28 @@ delete this plan's workspace (`rm -rf <workspace>`) — the git history is
 the record now. Sibling directories belong to other plans; leave them
 alone.
 
+> **Brain mode:** the git history is the record for *code*, not for
+> adjudications — a parked ruling exists in no commit. Before
+> `rm -rf "<workspace>"`, flush the ledger's durable lines into the Brain plan
+> body (or a `decision-logs` artefact linked from it) with
+> `brain_edit(resource="artefact", path="<plan path>", operation="edit", body=...)`:
+>
+> - every `Task <N>: parked — <finding> — ruling: <why the code stands>` line
+> - every `Task <N>: minor (deferred): …` line
+> - every `Task <N>: BLOCKED — …` line — write this one into the plan the
+>   moment it happens, not at Finish; the plan is defective and must say so
+>
+> Never flush `Task <N>: complete` or `Task <N>: fix round <R>/5` lines. Those
+> are crash-recovery scratch and die with the workspace. Flush first, delete
+> second — after `rm -rf` the rulings are gone.
+>
+> Then set the plan's terminal status once
+> superpowers-brain:finishing-a-development-branch returns:
+> `frontmatter={"status": "completed"}` — or `"parked"` if a tripped breaker
+> left load-bearing findings open, in which case the BLOCKED reason is already
+> in the plan body. `completed` means "execution is finished", not "branch is
+> merged".
+
 Use superpowers:finishing-a-development-branch.
 
 ## Common Rationalizations
@@ -437,7 +477,7 @@ Use superpowers:finishing-a-development-branch.
 
 ## Example Workflow
 
-> **In a Brain vault** (a `.brain/` directory exists at the project root), plans live at `_Temporal/Plans/yyyy-mm/yyyymmdd-plan~{Title}.md` instead of `docs/superpowers/plans/`. The workflow is identical otherwise — just substitute the plan path.
+> **In a Brain vault** (a `.brain/` directory exists in this directory or an ancestor), plans live at `_Temporal/Plans/yyyy-mm/yyyymmdd-plan~{Title}.md` instead of `docs/superpowers/plans/`. The workflow is identical otherwise — just substitute the plan path.
 
 ```
 You: I'm using Subagent-Driven Development to execute this plan.

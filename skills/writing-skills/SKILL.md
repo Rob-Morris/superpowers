@@ -10,7 +10,7 @@ description: Use when creating new skills, editing existing skills, or verifying
 **Writing skills IS Test-Driven Development applied to process documentation.**
 
 **Where skills live:**
-- **If working in an Obsidian Brain vault** (a `.brain/` directory exists at the project root), author the skill via `brain_create(resource="skill", name="<skill-slug>", body=...)`. Brain stores it in `_Config/Skills/<skill-slug>/SKILL.md` inside the vault. Vault-scoped: only available when working in that vault.
+- **If working in an Obsidian Brain vault** (a `.brain/` directory exists in this directory or an ancestor), author the skill via `brain_create(resource="skill", name="<skill-slug>", body=...)`. Brain stores it in `_Config/Skills/<skill-slug>/SKILL.md` inside the vault. Vault-scoped: only available when working in that vault.
 - **Otherwise, or when you want the skill available globally across all projects**, create it in your runtime's skills directory (`~/.claude/skills/<skill-slug>/` on Claude Code) — see [codex-tools.md](../using-superpowers/references/codex-tools.md) or [gemini-tools.md](../using-superpowers/references/gemini-tools.md) for the path on those runtimes. Codex, Copilot CLI, and Gemini CLI all also recognize `~/.agents/skills/` as a cross-runtime alias. Global, but outside any vault's taxonomy.
 
 You write test cases (pressure scenarios with subagents), watch them fail (baseline behavior), write the skill (documentation), watch tests pass (agents comply), and refactor (close loopholes).

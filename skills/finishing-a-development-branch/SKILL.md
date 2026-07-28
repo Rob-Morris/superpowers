@@ -177,6 +177,44 @@ git worktree prune  # Self-healing: clean up any stale registrations
 **Otherwise:** The host environment owns this workspace — leave it in
 place. If your platform provides a workspace-exit tool, use it.
 
+## Brain Mode
+
+In a Brain vault (a `.brain/` directory exists in this directory or an
+ancestor), this skill closes the artefact lifecycle after Step 6 and before
+it reports the outcome.
+
+**Plan status — read the state, don't guess at provenance.** Check the plan's
+`status`. If it is still `implementing` when you finish, set its terminal
+status before presenting the outcome:
+
+- `brain_edit(resource="artefact", path="<plan path>", operation="edit", frontmatter={"status": "completed"})`
+  (omit `body` — frontmatter-only change), or `"parked"` when load-bearing
+  work is still open. This applies whether or not the branch was merged;
+  `completed` means "execution is finished".
+
+Never move a plan that already reads `completed` or `parked` — the executor
+above you (superpowers-brain:executing-plans,
+superpowers-brain:subagent-driven-development, or
+superpowers-brain:subagent-driven-development-light) got there first, and its
+ruling stands. Setting the same terminal status twice is harmless; leaving a
+finished plan at `implementing` because you assumed someone else would do it
+is the failure this check exists to prevent.
+
+**Design status — always yours.** No executor covers this. When the plan you
+just finished was the last plan targeting its design, move that design from
+`active` to `implemented` and record what shipped:
+
+- `brain_edit(resource="artefact", path="<design path>", operation="edit", frontmatter={"status": "implemented"})`
+- Update the design body where implementation diverged from it — the design
+  is the durable record, and a stale one is worse than none.
+
+If other plans still target that design, leave it `active` and say which
+plans remain.
+
+**Step 6's workspace-exit tool** is the platform's own worktree tool where
+one exists — `ExitWorktree` in a harness that provides it. Use it instead of
+`cd`-ing out and leaving the harness's view of the workspace stale.
+
 ## Quick Reference
 
 | Option | Merge | Push | Keep Worktree | Cleanup Branch |

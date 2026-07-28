@@ -8,7 +8,7 @@ If you were dispatched as a subagent to execute a specific task, ignore this ski
 </SUBAGENT-STOP>
 
 <BRAIN-MODE>
-If a `.brain/` directory exists at the project root, this session is connected to a Brain vault. Before routing to superpowers skills, confirm `brain_session` has been called this turn — Brain's trigger table, memories, and skill index take precedence over superpowers' skill routing. Superpowers skills remain available for discretionary use once Brain context is loaded; they are not the first-choice routing mechanism in a Brain vault.
+If a `.brain/` directory exists in this directory or an ancestor, this session is connected to a Brain vault. Before routing to superpowers skills, confirm `brain_session` has been called this turn — Brain's trigger table, memories, and skill index take precedence over superpowers' skill routing. Superpowers skills remain available for discretionary use once Brain context is loaded; they are not the first-choice routing mechanism in a Brain vault.
 </BRAIN-MODE>
 
 <EXTREMELY-IMPORTANT>

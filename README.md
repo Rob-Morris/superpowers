@@ -20,6 +20,12 @@ Next up, once you say "go", it launches a *subagent-driven-development* process,
 
 There's a bunch more to it, but that's the core of the system. And because the skills trigger automatically, you don't need to do anything special. Your coding agent just has Superpowers.
 
+## Brain mode
+
+This fork defers to Brain when there is a Brain to defer to. If a `.brain/` directory exists in the working directory or any ancestor, the session-start hook injects nothing and Brain's own bootstrap runs instead — the skills stay available on demand, and each one prefers Brain as the system of record, creating designs, plans, and vault-local skills through the `brain_*` tools rather than writing them under `docs/superpowers/`. With no `.brain/` anywhere, everything behaves exactly as upstream Superpowers does.
+
+The awkward middle case is a project with a `.brain/` directory but no working `brain_*` tools — an MCP server that isn't installed or approved yet. Suppression still fires, so you get neither bootstrap. Set `SUPERPOWERS_IGNORE_BRAIN=1` in the environment to make the hook inject the normal Superpowers bootstrap anyway. It is a hook-level override: the skills' own Brain branches key off the `.brain/` directory, so they will still offer the Brain path.
+
 ## Sponsorship
 
 Superpowers originated with [Jesse Vincent](https://blog.fsck.com) and the team at [Prime Radiant](https://primeradiant.com). If you would like to support the upstream project directly, you can [sponsor Jesse's open source work](https://github.com/sponsors/obra).

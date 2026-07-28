@@ -11,7 +11,7 @@ Start by understanding the current project context, then ask questions one at a 
 
 ## Relationship to Brain shaping
 
-**If working in an Obsidian Brain vault** (a `.brain/` directory exists at the project root): prefer the `shaping` skill instead of this one. Shaping covers the same ground — its `brainstorm` mode handles new ideas and stub artefacts (explore, write initial content, hand off to refine), and its `refine` mode handles existing artefacts with open decisions. Brainstorming and shaping are **alternatives, not sequential stages** — don't run both.
+**If working in an Obsidian Brain vault** (a `.brain/` directory exists in this directory or an ancestor): prefer the `shaping` skill instead of this one. Shaping covers the same ground — its `brainstorm` mode handles new ideas and stub artefacts (explore, write initial content, hand off to refine), and its `refine` mode handles existing artefacts with open decisions. Brainstorming and shaping are **alternatives, not sequential stages** — don't run both.
 
 Only fall back to this skill in a Brain vault if the user explicitly asks for it, or if shaping isn't available for some reason.
 
@@ -111,7 +111,7 @@ digraph brainstorming {
 **Documentation:**
 
 - Write the validated design (spec):
-  - **If working in an Obsidian Brain vault** (a `.brain/` directory exists at the project root): create via `brain_create(resource="artefact", type="designs", title="<topic>")`. Brain handles path (`Designs/<Title>.md`), frontmatter, and initial status (`shaping`). Use `brain_edit` to update individual sections rather than rewriting the whole file. You do **not** need to commit — the vault may be a separate git repo, and Brain manages its own lifecycle.
+  - **If working in an Obsidian Brain vault** (a `.brain/` directory exists in this directory or an ancestor): create via `brain_create(resource="artefact", type="designs", title="<topic>")`. Brain handles path (`Designs/<Title>.md`), frontmatter, and initial status (`shaping`). Use `brain_edit` to update individual sections rather than rewriting the whole file. You do **not** need to commit — the vault may be a separate git repo, and Brain manages its own lifecycle.
   - **Otherwise:** save to `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md`. (User preferences for spec location override this default.) Commit the design document to git.
 - Use elements-of-style:writing-clearly-and-concisely skill if available
 
