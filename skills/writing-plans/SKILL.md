@@ -13,7 +13,7 @@ Assume they are a skilled developer, but know almost nothing about our toolset o
 
 **Announce at start:** "I'm using the writing-plans skill to create the implementation plan."
 
-**Context:** If working in an isolated worktree, it should have been created via the `superpowers:using-git-worktrees` skill at execution time.
+**Context:** If working in an isolated worktree, it should have been created via the `superpowers-brain:using-git-worktrees` skill at execution time.
 
 **Save plans to:**
 - **If working in an Obsidian Brain vault** (a `.brain/` directory exists in this directory or an ancestor): create the plan via `brain_create(resource="artefact", type="plans", title="<feature name>")`. Brain handles path (`_Temporal/Plans/yyyy-mm/yyyymmdd-plan~{Title}.md`), frontmatter, and status. Use `brain_edit` for subsequent section updates instead of rewriting the whole file.

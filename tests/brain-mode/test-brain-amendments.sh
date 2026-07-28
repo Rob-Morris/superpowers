@@ -106,6 +106,7 @@ assert_file_contains "$writing_plans" '_Temporal/Plans/yyyy-mm/yyyymmdd-plan~{Ti
 assert_file_contains "$writing_plans" 'brain_create(resource="artefact", type="plans", title="<feature name>")' "Creates plans via brain_create"
 assert_file_contains "$writing_plans" 'frontmatter={"status": "approved"}' "Marks approved plans in Brain mode"
 assert_file_contains "$writing_plans" '`approved` → `implementing` → `completed`' "Describes downstream status transitions"
+assert_file_contains "$writing_plans" 'a plan whose body is Brain-template-only cannot be executed at all: no task brief, no dispatch' "States the plan-body contract (### Task N headings etc.) that task-brief depends on"
 echo ""
 
 echo "Test 7: executing-plans documents Brain plan execution state..."
@@ -122,7 +123,7 @@ subagent_dev="$REPO_ROOT/skills/subagent-driven-development/SKILL.md"
 assert_file_contains "$requesting_review" '_Temporal/Plans/yyyy-mm/yyyymmdd-plan~{Title}.md' "Review skill documents Brain plan path"
 assert_file_contains "$requesting_review" 'PLAN_OR_REQUIREMENTS: Task 2 from _Temporal/Plans/2026-05/20260504-plan~Deployment plan.md' "Review example uses Brain plan path"
 assert_file_contains "$subagent_dev" '_Temporal/Plans/yyyy-mm/yyyymmdd-plan~{Title}.md' "Subagent workflow documents Brain plan path"
-assert_file_contains "$subagent_dev" '[Read plan file once: _Temporal/Plans/2026-05/20260504-plan~Feature plan.md]' "Subagent example uses Brain plan path"
+assert_file_contains "$subagent_dev" 'The workflow is identical otherwise — just substitute the plan path.' "Subagent example workflow notes Brain path substitution"
 echo ""
 
 echo "=== All Brain-mode amendment tests passed ==="

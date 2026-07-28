@@ -172,6 +172,7 @@ assert_command_output \
     "" \
     "$claude_home" \
     CLAUDE_PLUGIN_ROOT="$REPO_ROOT" \
+    SUPERPOWERS_IGNORE_BRAIN=1 \
     bash "$HOOK_UNDER_TEST"
 
 wrapper_home="$(make_home run-hook-wrapper)"
@@ -182,6 +183,7 @@ assert_command_output \
     "" \
     "$wrapper_home" \
     CLAUDE_PLUGIN_ROOT="$REPO_ROOT" \
+    SUPERPOWERS_IGNORE_BRAIN=1 \
     bash "$WRAPPER_UNDER_TEST" session-start
 
 cursor_home="$(make_home cursor)"
@@ -193,6 +195,7 @@ assert_command_output \
     "$cursor_home" \
     CURSOR_PLUGIN_ROOT="$REPO_ROOT" \
     CLAUDE_PLUGIN_ROOT="$REPO_ROOT" \
+    SUPERPOWERS_IGNORE_BRAIN=1 \
     bash "$HOOK_UNDER_TEST"
 
 copilot_home="$(make_home copilot-cli)"
@@ -204,6 +207,7 @@ assert_command_output \
     "$copilot_home" \
     COPILOT_CLI=1 \
     CLAUDE_PLUGIN_ROOT="$REPO_ROOT" \
+    SUPERPOWERS_IGNORE_BRAIN=1 \
     bash "$HOOK_UNDER_TEST"
 
 legacy_home="$(make_home legacy-warning-removed)"
@@ -215,7 +219,30 @@ assert_command_output \
     "Superpowers now uses"$'\037'"~/.config/superpowers/skills"$'\037'"~/.claude/skills"$'\037'"legacy" \
     "$legacy_home" \
     CLAUDE_PLUGIN_ROOT="$REPO_ROOT" \
+    SUPERPOWERS_IGNORE_BRAIN=1 \
     bash "$HOOK_UNDER_TEST"
+
+# Brain-mode (fork-specific): when a .brain/ directory is present in the
+# CWD (or an ancestor) and SUPERPOWERS_IGNORE_BRAIN is unset, the hook must
+# suppress its context injection entirely and emit {}. Use a fresh temp
+# directory (never the repo root, which is itself Brain-connected) so this
+# assertion is meaningful on a pristine checkout too.
+brain_home="$(make_home brain-suppressed)"
+brain_cwd="$(mktemp -d)"
+mkdir -p "$brain_cwd/.brain"
+cleanup_brain_cwd() {
+    rm -rf "$brain_cwd"
+}
+trap 'cleanup_brain_cwd; cleanup' EXIT
+
+brain_output="$(cd "$brain_cwd" && env -i PATH="${PATH:-}" HOME="$brain_home" CLAUDE_PLUGIN_ROOT="$REPO_ROOT" bash "$HOOK_UNDER_TEST" 2>&1)"
+if [[ "$brain_output" == "{}" ]]; then
+    pass "SessionStart suppresses context injection when .brain/ is present"
+else
+    fail "SessionStart suppresses context injection when .brain/ is present"
+    echo "    output:"
+    echo "$brain_output" | sed 's/^/      /'
+fi
 
 if [[ "$FAILURES" -gt 0 ]]; then
     echo "STATUS: FAILED ($FAILURES failure(s))"
