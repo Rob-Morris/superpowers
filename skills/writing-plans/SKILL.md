@@ -61,7 +61,7 @@ independently testable deliverable.
 ```markdown
 # [Feature Name] Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers-brain:subagent-driven-development (full review gates — for merge-grade work), superpowers-brain:subagent-driven-development-light (single end-of-plan review — for prototypes, small plans, lower-risk work), or superpowers-brain:executing-plans (batch execution with checkpoints) to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers-brain:subagent-driven-development (recommended), superpowers-brain:subagent-driven-development-light (lighter alternative — single end-of-plan review), or superpowers-brain:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** [One sentence describing what this builds]
 
@@ -166,24 +166,24 @@ Then proceed to Execution Handoff. Whichever executor your human partner picks �
 
 After saving the plan, offer execution choice:
 
-**"Plan complete and saved. Three execution options:**
+**"Plan complete and saved to `docs/superpowers/plans/<filename>.md`. Three execution options:**
 
-**1. Subagent-Driven — Full (recommended for merge-grade work)** - Fresh subagent per task + a task review (spec compliance and code quality) after each task, with a bounded fix loop. Highest quality bar, most iterations.
+**1. Subagent-Driven (recommended)** - I dispatch a fresh subagent per task, review between tasks, fast iteration
 
-**2. Subagent-Driven — Light (recommended for prototypes, small plans, lower-risk work)** - Fresh subagent per task, trust self-review, one end-of-plan review covering the whole implementation. Faster, less ceremony.
+**2. Inline Execution** - Execute tasks in this session using executing-plans, batch execution with checkpoints
 
-**3. Inline Execution** - Execute tasks in this session using executing-plans, batch execution with checkpoints.
+**3. Subagent-Driven — Light** - Fresh subagent per task, trust self-review, one end-of-plan review covering the whole implementation. Faster, less ceremony; for prototypes, small plans, lower-risk work.
 
 **Which approach?"**
 
-**If Subagent-Driven — Full chosen:**
+**If Subagent-Driven chosen:**
 - **REQUIRED SUB-SKILL:** Use superpowers-brain:subagent-driven-development
 - Fresh subagent per task + per-task review
-
-**If Subagent-Driven — Light chosen:**
-- **REQUIRED SUB-SKILL:** Use superpowers-brain:subagent-driven-development-light
-- Fresh subagent per task + single end-of-plan review
 
 **If Inline Execution chosen:**
 - **REQUIRED SUB-SKILL:** Use superpowers-brain:executing-plans
 - Batch execution with checkpoints for review
+
+**If Subagent-Driven — Light chosen:**
+- **REQUIRED SUB-SKILL:** Use superpowers-brain:subagent-driven-development-light
+- Fresh subagent per task + single end-of-plan review
